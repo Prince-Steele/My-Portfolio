@@ -121,9 +121,13 @@ export async function POST(request: Request): Promise<Response> {
 
   if (!resendResponse.ok) {
     const resendError = await resendResponse.json().catch(() => null);
+    const resendMessage =
+      typeof resendError?.message === 'string'
+        ? resendError.message
+        : 'Unable to send your message right now.';
 
     return jsonResponse({
-      message: 'Unable to send your message right now.',
+      message: resendMessage,
       error: resendError
     }, 502);
   }
