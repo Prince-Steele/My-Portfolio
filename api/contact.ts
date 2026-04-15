@@ -87,37 +87,47 @@ export async function POST(request: Request): Promise<Response> {
   const safeSubject = escapeHtml(subject || 'Portfolio inquiry');
   const safeMessage = escapeHtml(message).replace(/\n/g, '<br />');
 
-  const resendResponse = await fetch(RESEND_API_URL, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-      'User-Agent': 'prince-portfolio-contact/1.0'
-    },
-    body: JSON.stringify({
-      from: fromEmail,
-      to: [toEmail],
-      subject: `Portfolio Contact: ${subject || `Message from ${name}`}`,
-      reply_to: email,
-      html: `
-        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111827;">
-          <h2 style="margin-bottom: 16px;">New portfolio message</h2>
-          <p><strong>Name:</strong> ${safeName}</p>
-          <p><strong>Email:</strong> ${safeEmail}</p>
-          <p><strong>Subject:</strong> ${safeSubject}</p>
-          <p><strong>Message:</strong><br />${safeMessage}</p>
-        </div>
-      `,
-      text: [
-        'New portfolio message',
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Subject: ${subject || 'Portfolio inquiry'}`,
-        '',
-        message
-      ].join('\n')
-    })
-  });
+  let resendResponse: Response;
+
+  try {
+    resendResponse = await fetch(RESEND_API_URL, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        'User-Agent': 'prince-portfolio-contact/1.0'
+      },
+      body: JSON.stringify({
+        from: fromEmail,
+        to: [toEmail],
+        subject: `Portfolio Contact: ${subject || `Message from ${name}`}`,
+        reply_to: email,
+        html: `
+          <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111827;">
+            <h2 style="margin-bottom: 16px;">New portfolio message</h2>
+            <p><strong>Name:</strong> ${safeName}</p>
+            <p><strong>Email:</strong> ${safeEmail}</p>
+            <p><strong>Subject:</strong> ${safeSubject}</p>
+            <p><strong>Message:</strong><br />${safeMessage}</p>
+          </div>
+        `,
+        text: [
+          'New portfolio message',
+          `Name: ${name}`,
+          `Email: ${email}`,
+          `Subject: ${subject || 'Portfolio inquiry'}`,
+          '',
+          message
+        ].join('\n')
+      })
+    });
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Unexpected email service error.';
+
+    return jsonResponse({
+      message: `Unable to reach Resend: ${errorMessage}`
+    }, 502);
+  }
 
   if (!resendResponse.ok) {
     const resendError = await resendResponse.json().catch(() => null);

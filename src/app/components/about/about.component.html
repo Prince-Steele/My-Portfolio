@@ -53,14 +53,45 @@
         </div>
       </div>
 
-      <a
-        href="assets/resume/My Resume.docx"
-        download="Prince-Steele-Resume.docx"
-        class="btn-primary about-resume"
-      >
-        Download Resume
-        <lucide-icon [img]="downloadIcon" class="inline-icon" [size]="16"></lucide-icon>
-      </a>
+      <details class="resume-picker about-resume">
+        <summary class="btn-primary resume-picker-trigger">
+          <span class="resume-picker-trigger-copy">
+            Download Resume
+            <lucide-icon [img]="downloadIcon" class="inline-icon" [size]="16"></lucide-icon>
+          </span>
+          <lucide-icon [img]="chevronDownIcon" class="resume-picker-chevron" [size]="16"></lucide-icon>
+        </summary>
+
+        <div class="resume-picker-menu">
+          <a
+            href="assets/resume/My Resume (1).pdf"
+            download="Prince-Steele-Resume.pdf"
+            class="resume-option"
+          >
+            <span class="resume-option-icon resume-option-icon-pdf">
+              <lucide-icon [img]="pdfIcon" [size]="16"></lucide-icon>
+            </span>
+            <span class="resume-option-copy">
+              <strong>Download PDF</strong>
+              <span>Best for recruiters and quick previewing</span>
+            </span>
+          </a>
+
+          <a
+            href="assets/resume/My Resume.docx"
+            download="Prince-Steele-Resume.docx"
+            class="resume-option"
+          >
+            <span class="resume-option-icon resume-option-icon-docx">
+              <lucide-icon [img]="docxIcon" [size]="16"></lucide-icon>
+            </span>
+            <span class="resume-option-copy">
+              <strong>Download DOCX</strong>
+              <span>Editable format for sharing when needed</span>
+            </span>
+          </a>
+        </div>
+      </details>
     </div>
   </div>
 </section>

@@ -58,10 +58,19 @@ export class ContactComponent {
         body: JSON.stringify(payload)
       });
 
-      const result = await response.json().catch(() => null);
+      const rawResponse = await response.text();
+      let result: { message?: string } | null = null;
+
+      try {
+        result = rawResponse ? JSON.parse(rawResponse) : null;
+      } catch {
+        result = null;
+      }
 
       if (!response.ok) {
-        this.errorMessage = result?.message ?? 'Unable to send your message right now.';
+        this.errorMessage =
+          result?.message ??
+          (rawResponse || `Unable to send your message right now. (HTTP ${response.status})`);
         return;
       }
 

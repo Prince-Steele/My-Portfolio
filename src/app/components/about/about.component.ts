@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import {
   BriefcaseBusiness,
+  ChevronDown,
   Download,
+  FileText,
+  FileType,
   LucideIconData,
   MapPin,
   Rocket,
@@ -25,6 +28,9 @@ export class AboutComponent {
   readonly opportunityIcon: LucideIconData = BriefcaseBusiness;
   readonly directionIcon: LucideIconData = Rocket;
   readonly downloadIcon: LucideIconData = Download;
+  readonly chevronDownIcon: LucideIconData = ChevronDown;
+  readonly pdfIcon: LucideIconData = FileText;
+  readonly docxIcon: LucideIconData = FileType;
 
   highlights: HighlightItem[] = [
     {

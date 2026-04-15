@@ -151,7 +151,115 @@
 
 .about-resume {
   margin-top: 32px;
+  display: inline-block;
+  position: relative;
+}
+
+.resume-picker summary {
+  list-style: none;
+}
+
+.resume-picker summary::-webkit-details-marker {
+  display: none;
+}
+
+.resume-picker-trigger {
   display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.resume-picker-trigger-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resume-picker-chevron {
+  transition: transform 0.25s ease;
+}
+
+.resume-picker[open] .resume-picker-chevron {
+  transform: rotate(180deg);
+}
+
+.resume-picker-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  min-width: 320px;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-glass-strong);
+  border: 1px solid var(--color-input-border);
+  box-shadow: var(--shadow-elevated);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  display: grid;
+  gap: 8px;
+  z-index: 4;
+}
+
+.resume-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  color: var(--color-heading);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+.resume-option:hover {
+  transform: translateX(3px);
+  border-color: rgba(124, 58, 237, 0.24);
+  background: rgba(124, 58, 237, 0.08);
+}
+
+.resume-option-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid;
+}
+
+.resume-option-icon-pdf {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.resume-option-icon-docx {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.12);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+.resume-option-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.resume-option-copy strong {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.resume-option-copy span {
+  font-size: 0.76rem;
+  line-height: 1.5;
+  color: var(--color-dimmed);
 }
 
 @media (max-width: 900px) {
@@ -175,5 +283,21 @@
 
   .highlight-item {
     text-align: left;
+  }
+
+  .resume-picker-menu {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 540px) {
+  .resume-picker-trigger {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .resume-picker-menu {
+    min-width: min(320px, calc(100vw - 40px));
   }
 }
