@@ -53,45 +53,66 @@
         </div>
       </div>
 
-      <details class="resume-picker about-resume">
-        <summary class="btn-primary resume-picker-trigger">
+      <div class="resume-picker about-resume" [class.open]="resumePickerOpen">
+        <button
+          type="button"
+          class="btn-primary resume-picker-trigger"
+          [attr.aria-expanded]="resumePickerOpen"
+          (click)="toggleResumePicker()"
+        >
           <span class="resume-picker-trigger-copy">
             Download Resume
             <lucide-icon [img]="downloadIcon" class="inline-icon" [size]="16"></lucide-icon>
           </span>
           <lucide-icon [img]="chevronDownIcon" class="resume-picker-chevron" [size]="16"></lucide-icon>
-        </summary>
+        </button>
+      </div>
+    </div>
+  </div>
 
-        <div class="resume-picker-menu">
-          <a
-            href="assets/resume/My Resume (1).pdf"
-            download="Prince-Steele-Resume.pdf"
-            class="resume-option"
-          >
-            <span class="resume-option-icon resume-option-icon-pdf">
-              <lucide-icon [img]="pdfIcon" [size]="16"></lucide-icon>
-            </span>
-            <span class="resume-option-copy">
-              <strong>Download PDF</strong>
-              <span>Best for recruiters and quick previewing</span>
-            </span>
-          </a>
+  <div class="resume-modal" *ngIf="resumePickerOpen" (click)="closeResumePicker()">
+    <div class="resume-modal-card" (click)="$event.stopPropagation()">
+      <button type="button" class="resume-modal-close" aria-label="Close resume options" (click)="closeResumePicker()">
+        ×
+      </button>
 
-          <a
-            href="assets/resume/My Resume.docx"
-            download="Prince-Steele-Resume.docx"
-            class="resume-option"
-          >
-            <span class="resume-option-icon resume-option-icon-docx">
-              <lucide-icon [img]="docxIcon" [size]="16"></lucide-icon>
-            </span>
-            <span class="resume-option-copy">
-              <strong>Download DOCX</strong>
-              <span>Editable format for sharing when needed</span>
-            </span>
-          </a>
-        </div>
-      </details>
+      <div class="resume-modal-copy">
+        <span class="resume-modal-label">Resume Download</span>
+        <h3>Choose your preferred format</h3>
+        <p>Pick PDF for easy viewing or DOCX if you need an editable version.</p>
+      </div>
+
+      <div class="resume-modal-actions">
+        <a
+          href="assets/resume/My Resume (1).pdf"
+          download="Prince-Steele-Resume.pdf"
+          class="resume-option"
+          (click)="closeResumePicker()"
+        >
+          <span class="resume-option-icon resume-option-icon-pdf">
+            <lucide-icon [img]="pdfIcon" [size]="16"></lucide-icon>
+          </span>
+          <span class="resume-option-copy">
+            <strong>Download PDF</strong>
+            <span>Best for recruiters and quick previewing</span>
+          </span>
+        </a>
+
+        <a
+          href="assets/resume/My Resume.docx"
+          download="Prince-Steele-Resume.docx"
+          class="resume-option"
+          (click)="closeResumePicker()"
+        >
+          <span class="resume-option-icon resume-option-icon-docx">
+            <lucide-icon [img]="docxIcon" [size]="16"></lucide-icon>
+          </span>
+          <span class="resume-option-copy">
+            <strong>Download DOCX</strong>
+            <span>Editable format for sharing when needed</span>
+          </span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
