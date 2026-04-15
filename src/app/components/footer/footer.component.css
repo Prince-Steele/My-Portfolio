@@ -24,20 +24,125 @@
 }
 
 .footer-logo {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
   margin-bottom: 16px;
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 700;
   color: var(--color-heading);
 }
 
-.logo-bracket {
-  color: var(--color-primary);
+.footer-logo .brand-mark {
+  position: relative;
+  width: 72px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.logo-slash {
-  color: var(--color-accent);
+.footer-logo .brand-ring,
+.footer-logo .brand-ring::before {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  content: '';
+}
+
+.footer-logo .brand-ring {
+  border: 1.5px solid rgba(96, 165, 250, 0.34);
+  animation: footerLogoOrbit 7s linear infinite;
+}
+
+.footer-logo .brand-ring::before {
+  inset: 5px -3px;
+  border: 1px solid rgba(124, 58, 237, 0.28);
+  opacity: 0.85;
+  animation: footerLogoOrbitReverse 5.5s linear infinite;
+}
+
+.footer-logo .brand-core {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 48%),
+    linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(14, 165, 233, 0.14));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 12px 24px rgba(15, 23, 42, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+
+.footer-logo .brand-core::after {
+  content: '';
+  position: absolute;
+  inset: -18%;
+  background: conic-gradient(from 180deg, rgba(124, 58, 237, 0.3), rgba(14, 165, 233, 0.12), rgba(16, 185, 129, 0.2), rgba(124, 58, 237, 0.3));
+  filter: blur(10px);
+}
+
+.footer-logo .brand-glyph {
+  position: relative;
+  z-index: 1;
+  width: 27px;
+  height: 27px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #22c55e 48%, #06b6d4 100%);
+  -webkit-mask-image: url('/assets/image/mylogo.svg');
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-image: url('/assets/image/mylogo.svg');
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.footer-logo .brand-copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.footer-logo .brand-name {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--color-heading);
+}
+
+.footer-logo .brand-role {
+  margin-top: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+@keyframes footerLogoOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes footerLogoOrbitReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
 }
 
 .footer-tagline {
@@ -164,6 +269,20 @@
 @media (max-width: 540px) {
   .footer-inner {
     grid-template-columns: 1fr;
+  }
+
+  .footer-logo {
+    gap: 14px;
+  }
+
+  .footer-logo .brand-mark {
+    width: 64px;
+    height: 46px;
+  }
+
+  .footer-logo .brand-core {
+    width: 44px;
+    height: 44px;
   }
 
   .footer-bar-inner {

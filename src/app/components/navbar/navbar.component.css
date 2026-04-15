@@ -24,20 +24,127 @@
 }
 
 .nav-logo {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--color-heading);
-  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
   flex-shrink: 0;
+  color: var(--color-heading);
 }
 
-.logo-bracket {
-  color: var(--color-primary);
+.brand-mark {
+  position: relative;
+  width: 60px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.logo-slash {
-  color: var(--color-accent);
+.brand-ring,
+.brand-ring::before {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  content: '';
+}
+
+.brand-ring {
+  border: 1.5px solid rgba(96, 165, 250, 0.32);
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.08) inset;
+  animation: logoOrbit 7s linear infinite;
+}
+
+.brand-ring::before {
+  inset: 4px -3px;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  opacity: 0.8;
+  animation: logoOrbitReverse 5s linear infinite;
+}
+
+.brand-core {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.18), transparent 48%),
+    linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(14, 165, 233, 0.14));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 10px 22px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+
+.brand-core::after {
+  content: '';
+  position: absolute;
+  inset: -18%;
+  background: conic-gradient(from 180deg, rgba(124, 58, 237, 0.28), rgba(14, 165, 233, 0.12), rgba(16, 185, 129, 0.22), rgba(124, 58, 237, 0.28));
+  filter: blur(10px);
+  opacity: 0.9;
+}
+
+.brand-glyph {
+  position: relative;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #22c55e 45%, #06b6d4 100%);
+  -webkit-mask-image: url('/assets/image/mylogo.svg');
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-image: url('/assets/image/mylogo.svg');
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.04rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--color-heading);
+}
+
+.brand-role {
+  margin-top: 5px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+@keyframes logoOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes logoOrbitReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
 }
 
 .nav-links {
@@ -170,6 +277,25 @@
 @media (max-width: 768px) {
   .nav-inner {
     gap: 16px;
+  }
+
+  .brand-copy {
+    display: none;
+  }
+
+  .brand-mark {
+    width: 56px;
+    height: 40px;
+  }
+
+  .brand-core {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand-glyph {
+    width: 22px;
+    height: 22px;
   }
 
   .hamburger {
