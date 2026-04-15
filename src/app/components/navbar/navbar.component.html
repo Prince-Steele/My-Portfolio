@@ -1,0 +1,42 @@
+<nav class="navbar" [class.scrolled]="scrolled">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="#hero">
+      <span class="logo-bracket">&lt;</span>Prince<span class="logo-slash">/</span><span class="logo-bracket">&gt;</span>
+    </a>
+
+    <ul class="nav-links" [class.open]="menuOpen">
+      <li><a href="#about" (click)="closeMenu()">About</a></li>
+      <li><a href="#goals" (click)="closeMenu()">Goals</a></li>
+      <li><a href="#projects" (click)="closeMenu()">Projects</a></li>
+      <li><a href="#skills" (click)="closeMenu()">Skills</a></li>
+      <li><a href="#contact" (click)="closeMenu()">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button
+        type="button"
+        class="theme-toggle"
+        [class.light]="isLightTheme"
+        [attr.aria-label]="isLightTheme ? 'Switch to dark mode' : 'Switch to light mode'"
+        [attr.aria-pressed]="isLightTheme"
+        (click)="toggleTheme()"
+      >
+        <span class="theme-toggle-track">
+          <span class="theme-toggle-thumb">
+            <lucide-icon [img]="isLightTheme ? sunIcon : moonIcon" class="theme-toggle-icon" [size]="12"></lucide-icon>
+          </span>
+        </span>
+        <span class="theme-toggle-label">{{ isLightTheme ? 'Light' : 'Dark' }}</span>
+      </button>
+
+      <a href="#contact" class="btn-primary nav-cta" (click)="closeMenu()">
+        Hire Me
+        <lucide-icon [img]="arrowRightIcon" class="inline-icon" [size]="16"></lucide-icon>
+      </a>
+
+      <button type="button" class="hamburger" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>

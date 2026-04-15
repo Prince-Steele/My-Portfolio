@@ -1,0 +1,48 @@
+<section class="projects section" id="projects">
+  <div class="orb orb-projects"></div>
+  <div class="container">
+    <div class="projects-header">
+      <span class="section-label">Projects</span>
+      <h2 class="section-title">What I've <span class="gradient-text">Built</span></h2>
+      <p class="section-subtitle">
+        A focused look at real projects I have built and one upcoming concept that reflects
+        the AI-powered systems I want to keep developing.
+      </p>
+    </div>
+
+    <div class="filter-tabs">
+      <button
+        *ngFor="let tab of tabs"
+        class="tab-btn"
+        [class.active]="activeTab === tab"
+        (click)="setTab(tab)"
+      >
+        {{ tab }}
+      </button>
+    </div>
+
+    <div class="projects-grid">
+      <article class="project-card" *ngFor="let p of filteredProjects">
+        <div class="project-img-wrap">
+          <img [src]="p.image" [alt]="p.alt" class="project-image" />
+          <div class="project-image-overlay"></div>
+          <div class="project-status">
+            <lucide-icon [img]="p.statusIcon" [size]="14"></lucide-icon>
+            <span>{{ p.statusLabel }}</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="ptag" *ngFor="let t of p.tags">{{ t }}</span>
+          </div>
+          <h3 class="project-name">{{ p.name }}</h3>
+          <p class="project-desc">{{ p.desc }}</p>
+          <a *ngIf="p.liveUrl" [href]="p.liveUrl" target="_blank" rel="noreferrer" class="project-link">
+            <span>Visit Website</span>
+            <lucide-icon [img]="liveIcon" [size]="16"></lucide-icon>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

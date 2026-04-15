@@ -1,0 +1,62 @@
+<section class="about section" id="about">
+  <div class="orb orb-about"></div>
+  <div class="container about-inner">
+    <div class="about-visual">
+      <div class="about-img-wrap">
+        <img src="assets/image/myportfolio.png" alt="About Prince Steele" class="about-img" />
+        <div class="img-overlay"></div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-item">
+          <lucide-icon [img]="locationIcon" class="info-icon info-icon-primary" [size]="18"></lucide-icon>
+          <span>Based in Jamaica</span>
+        </div>
+        <div class="info-item">
+          <lucide-icon [img]="opportunityIcon" class="info-icon info-icon-accent" [size]="18"></lucide-icon>
+          <span>Seeking Entry-Level Roles</span>
+        </div>
+        <div class="info-item">
+          <lucide-icon [img]="directionIcon" class="info-icon info-icon-secondary" [size]="18"></lucide-icon>
+          <span>AI &amp; Distributed Systems Path</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <span class="section-label">About Me</span>
+      <h2 class="section-title">Building Real Systems With<br><span class="gradient-text">Long-Term Vision</span></h2>
+
+      <p class="about-para">
+        I’m an entry-level full-stack developer based in Jamaica, with hands-on experience
+        building modern web applications using Angular, Node.js, Express, and SQL-based databases.
+      </p>
+      <p class="about-para">
+        One of the strongest examples of my work is a healthcare platform that includes secure
+        authentication, role-based access control, real-time messaging, and appointment scheduling,
+        showing my ability to design and implement complete production-style systems.
+      </p>
+      <p class="about-para">
+        I use AI-assisted tools within my workflow for debugging, optimization, and rapid iteration
+        while continuing to strengthen my core engineering skills. I’m currently looking for
+        entry-level full-stack or software engineering opportunities where I can learn, contribute,
+        and grow through real product work.
+      </p>
+
+      <div class="highlights">
+        <div class="highlight-item" *ngFor="let h of highlights">
+          <lucide-icon [img]="h.icon" class="highlight-icon" [size]="20"></lucide-icon>
+          <div>
+            <strong>{{ h.title }}</strong>
+            <p>{{ h.desc }}</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="assets/resume.pdf" target="_blank" class="btn-primary about-resume">
+        Download Resume
+        <lucide-icon [img]="downloadIcon" class="inline-icon" [size]="16"></lucide-icon>
+      </a>
+    </div>
+  </div>
+</section>

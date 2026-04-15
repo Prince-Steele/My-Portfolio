@@ -1,0 +1,24 @@
+<section class="goals section" id="goals">
+  <div class="orb orb-goals-1"></div>
+  <div class="orb orb-goals-2"></div>
+  <div class="container">
+    <div class="goals-header">
+      <span class="section-label">Career Direction</span>
+      <h2 class="section-title">Where I'm <span class="gradient-text">Growing</span></h2>
+      <p class="section-subtitle">
+        My path is grounded in practical full-stack engineering today, with a long-term
+        focus on AI-driven systems, distributed architectures, and technical leadership.
+      </p>
+    </div>
+
+    <div class="goals-grid">
+      <div class="goal-card" *ngFor="let goal of goals; let i = index">
+        <div class="goal-number">{{ (i + 1).toString().padStart(2,'0') }}</div>
+        <lucide-icon [img]="goal.icon" class="goal-icon" [size]="24"></lucide-icon>
+        <h3 class="goal-title">{{ goal.title }}</h3>
+        <p class="goal-desc">{{ goal.desc }}</p>
+        <div class="goal-tag">{{ goal.tag }}</div>
+      </div>
+    </div>
+  </div>
+</section>

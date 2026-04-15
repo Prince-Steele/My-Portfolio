@@ -1,0 +1,134 @@
+.goals {
+  background: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.orb-goals-1 {
+  width: 500px;
+  height: 500px;
+  background: rgba(124, 58, 237, 0.1);
+  top: -100px;
+  left: -200px;
+}
+
+.orb-goals-2 {
+  width: 400px;
+  height: 400px;
+  background: rgba(6, 182, 212, 0.07);
+  bottom: 0;
+  right: -150px;
+}
+
+.goals-header {
+  text-align: center;
+  margin-bottom: 64px;
+  position: relative;
+  z-index: 1;
+}
+
+.goals-header .section-label {
+  justify-content: center;
+}
+
+.goals-header .section-label::before {
+  display: none;
+}
+
+.goals-header .section-subtitle {
+  margin: 0 auto;
+}
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.goal-card {
+  background: var(--color-surface-gradient);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: var(--transition);
+}
+
+.goal-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-card);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.goal-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(124, 58, 237, 0.35);
+  box-shadow: var(--shadow-card);
+}
+
+.goal-card:hover::before {
+  opacity: 1;
+}
+
+.goal-number {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-primary-fade);
+}
+
+.goal-icon {
+  display: inline-flex;
+  color: var(--color-primary-2);
+  margin-bottom: 16px;
+}
+
+.goal-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin-bottom: 10px;
+}
+
+.goal-desc {
+  font-size: 0.85rem;
+  color: var(--color-dimmed);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.goal-tag {
+  display: inline-flex;
+  padding: 4px 12px;
+  background: var(--color-tag-bg);
+  border: 1px solid var(--color-tag-border);
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-tag-text);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 960px) {
+  .goals-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .goals-grid {
+    grid-template-columns: 1fr;
+  }
+}

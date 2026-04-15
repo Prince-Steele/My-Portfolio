@@ -2,10 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Portfolio</title>
+  <title>Prince | Full-Stack Developer Portfolio</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Prince's professional portfolio for full-stack development work, upcoming projects, and contact opportunities.">
+  <meta name="keywords" content="Full-Stack Developer, Angular, Node.js, Portfolio, Web Developer, Trinidad">
+  <meta name="author" content="Prince">
+
+  <meta property="og:title" content="Prince | Full-Stack Developer">
+  <meta property="og:description" content="Crafting elegant, high-performance digital experiences.">
+  <meta property="og:type" content="website">
+
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    (function () {
+      var themeStorageKey = 'portfolio-theme';
+      var theme = 'dark';
+
+      try {
+        var storedTheme = window.localStorage.getItem(themeStorageKey);
+        if (storedTheme === 'light' || storedTheme === 'dark') {
+          theme = storedTheme;
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+          theme = 'light';
+        }
+      } catch (error) {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+          theme = 'light';
+        }
+      }
+
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 </head>
 <body>
   <app-root></app-root>

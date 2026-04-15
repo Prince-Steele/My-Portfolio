@@ -1,0 +1,52 @@
+<section class="skills section" id="skills">
+  <div class="orb orb-skills"></div>
+  <div class="container">
+    <div class="skills-header">
+      <span class="section-label">My Skills</span>
+      <h2 class="section-title">Tools &amp; <span class="gradient-text">Technologies</span></h2>
+      <p class="section-subtitle">
+        A summary of my technical toolkit built through hands-on projects,
+        continuous learning, and real-world application.
+      </p>
+    </div>
+
+    <div class="skills-layout">
+      <div class="skill-bars">
+        <div class="skill-bar-item" *ngFor="let s of coreSkills">
+          <div class="skill-bar-top">
+            <span class="skill-name">{{ s.name }}</span>
+            <span class="skill-pct">{{ s.pct }}%</span>
+          </div>
+          <div class="skill-track">
+            <div class="skill-fill" [style.width.%]="s.pct" [style.background]="s.color"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-categories">
+        <div class="tech-category" *ngFor="let cat of techCategories">
+          <h4 class="cat-title">
+            <span class="cat-dot" [style.background]="cat.color"></span>
+            {{ cat.name }}
+          </h4>
+          <div class="tech-pills">
+            <span class="tech-pill" *ngFor="let t of cat.techs">{{ t }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="soft-skills">
+      <h3 class="soft-title">Beyond the Code</h3>
+      <div class="soft-grid">
+        <div class="soft-card" *ngFor="let s of softSkills">
+          <lucide-icon [img]="s.icon" class="soft-icon" [size]="22"></lucide-icon>
+          <div class="soft-text">
+            <strong>{{ s.title }}</strong>
+            <p>{{ s.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
