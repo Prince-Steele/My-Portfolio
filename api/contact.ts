@@ -42,9 +42,9 @@ export function GET(): Response {
 }
 
 export async function POST(request: Request): Promise<Response> {
-  const apiKey = process.env.RESEND_API_KEY;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL;
-  const toEmail = process.env.CONTACT_TO_EMAIL ?? 'princesteele23@gmail.com';
+  const apiKey = process.env['RESEND_API_KEY'];
+  const fromEmail = process.env['CONTACT_FROM_EMAIL'];
+  const toEmail = process.env['CONTACT_TO_EMAIL'] ?? 'princesteele23@gmail.com';
 
   if (!apiKey || !fromEmail) {
     return jsonResponse({
