@@ -84,6 +84,12 @@
   color: var(--color-heading);
 }
 
+.cc-icon-linkedin {
+  background: rgba(14, 118, 168, 0.14);
+  border-color: rgba(14, 118, 168, 0.28);
+  color: #0a66c2;
+}
+
 .cc-label {
   display: block;
   font-size: 0.7rem;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BadgeCheck, Github, LucideIconData, Mail, Send } from 'lucide-angular';
+import { BadgeCheck, Github, Linkedin, LucideIconData, Mail, Send } from 'lucide-angular';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 export class ContactComponent {
   readonly contactApiUrl = environment.contactApiUrl;
   readonly githubIcon: LucideIconData = Github;
+  readonly linkedinIcon: LucideIconData = Linkedin;
   readonly mailIcon: LucideIconData = Mail;
   readonly sendIcon: LucideIconData = Send;
   readonly sentIcon: LucideIconData = BadgeCheck;

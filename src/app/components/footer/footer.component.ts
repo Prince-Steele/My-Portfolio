@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Github, Heart, LucideIconData, Mail } from 'lucide-angular';
+import { Github, Heart, Linkedin, LucideIconData, Mail } from 'lucide-angular';
 
 @Component({
   selector: 'app-footer',
@@ -8,6 +8,7 @@ import { Github, Heart, LucideIconData, Mail } from 'lucide-angular';
 })
 export class FooterComponent {
   readonly githubIcon: LucideIconData = Github;
+  readonly linkedinIcon: LucideIconData = Linkedin;
   readonly mailIcon: LucideIconData = Mail;
   readonly heartIcon: LucideIconData = Heart;
 
