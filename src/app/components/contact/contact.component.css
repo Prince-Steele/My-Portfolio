@@ -206,6 +206,14 @@
     grid-template-columns: 1fr;
     gap: 48px;
   }
+
+  .contact-info {
+    order: 2;
+  }
+
+  .contact-form-wrap {
+    order: 1;
+  }
 }
 
 @media (max-width: 540px) {
