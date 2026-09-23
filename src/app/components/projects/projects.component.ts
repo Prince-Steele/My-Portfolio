@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { BadgeCheck, LucideIconData, Rocket, SquareArrowRight } from 'lucide-angular';
+import { BadgeCheck, LucideIconData, SquareArrowRight } from 'lucide-angular';
 
-type ProjectCategory = 'Built' | 'Upcoming';
+type ProjectCategory = 'Built';
 
 interface Project {
   name: string;
@@ -23,7 +23,7 @@ interface Project {
 })
 export class ProjectsComponent {
   readonly liveIcon: LucideIconData = SquareArrowRight;
-  tabs: Array<'All' | ProjectCategory> = ['All', 'Built', 'Upcoming'];
+  tabs: Array<'All' | ProjectCategory> = ['All', 'Built'];
   activeTab: 'All' | ProjectCategory = 'All';
 
   projects: Project[] = [
@@ -60,16 +60,6 @@ export class ProjectsComponent {
       image: 'assets/image/Cropwiseproject.png',
       alt: 'CropWise agriculture platform project screenshot',
       liveUrl: 'https://cropwise-ai-six.vercel.app/'
-    },
-    {
-      name: 'OptiHome.AI',
-      desc: 'An AI-powered smart home energy platform that helps households understand electricity usage, analyze bill changes, and receive personalized energy-saving recommendations.',
-      tags: ['Angular', 'Node.js', 'MySQL', 'AI'],
-      category: 'Upcoming',
-      statusIcon: Rocket,
-      statusLabel: 'Upcoming',
-      image: 'assets/image/OptiHome.png',
-      alt: 'OptiHome.AI upcoming project concept image'
     }
   ];
 
