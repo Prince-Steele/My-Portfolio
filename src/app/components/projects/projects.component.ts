@@ -12,6 +12,7 @@ interface Project {
   statusLabel: string;
   image: string;
   alt: string;
+  imageFit?: 'contain';
   liveUrl?: string;
 }
 
@@ -26,6 +27,18 @@ export class ProjectsComponent {
   activeTab: 'All' | ProjectCategory = 'All';
 
   projects: Project[] = [
+    {
+      name: 'PaveWay',
+      desc: 'A civic platform that empowers Jamaican citizens to report potholes, flooding, and other road issues, track repair progress, and improve communities across all 14 parishes.',
+      tags: ['React', 'Supabase', 'PWA', 'Civic Tech'],
+      category: 'Built',
+      statusIcon: BadgeCheck,
+      statusLabel: 'Built',
+      image: 'assets/image/paveway.png',
+      alt: 'PaveWay logo featuring a road inside a map pin',
+      imageFit: 'contain',
+      liveUrl: 'https://paveway-rust.vercel.app/'
+    },
     {
       name: 'CareWise Health Platform',
       desc: 'Your digital healthcare platform built to support secure access, communication, and appointment workflows in one experience.',

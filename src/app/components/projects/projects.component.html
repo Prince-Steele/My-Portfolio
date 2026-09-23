@@ -24,7 +24,7 @@
     <div class="projects-grid">
       <article class="project-card" *ngFor="let p of filteredProjects">
         <div class="project-img-wrap">
-          <img [src]="p.image" [alt]="p.alt" class="project-image" />
+          <img [src]="p.image" [alt]="p.alt" class="project-image" [class.project-image-contain]="p.imageFit === 'contain'" />
           <div class="project-image-overlay"></div>
           <div class="project-status">
             <lucide-icon [img]="p.statusIcon" [size]="14"></lucide-icon>
